@@ -9,9 +9,9 @@ html_handling = "none"
 not_found_handling = "single-page-application"
 
 [[routes]]
-pattern = "icrabuilders.com"
+pattern = "icrabuilders.com/*"
 zone_name = "icrabuilders.com"
 
 [[routes]]
-pattern = "www.icrabuilders.com"
+pattern = "www.icrabuilders.com/*"
 zone_name = "icrabuilders.com"
