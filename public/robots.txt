@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://icrabuilders.com/sitemap-0.xml

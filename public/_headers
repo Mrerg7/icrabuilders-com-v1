@@ -1,0 +1,22 @@
+# Canonical HTTP Link header — required for GSC canonical resolution
+/
+  Link: <https://icrabuilders.com/>; rel="canonical"
+
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: public, max-age=3600
+
+# Fonts — longer cache
+https://fonts.googleapis.com/*
+  Cache-Control: public, max-age=86400
+
+https://fonts.gstatic.com/*
+  Cache-Control: public, max-age=86400
+
+# Sitemap
+/sitemap-0.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
