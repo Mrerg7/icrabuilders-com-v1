@@ -1,2 +1,0 @@
-# Redirect www to apex (canonical)
-https://www.icrabuilders.com/* https://icrabuilders.com/:splat 301!
