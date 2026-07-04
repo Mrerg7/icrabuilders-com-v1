@@ -45,10 +45,19 @@ const product = {
   name: 'icrabuilders.com domain name',
   description:
     'Premium .com domain for ICRA Builders in healthcare construction. The authoritative brand for ICRA compliance, training, and specialized construction services.',
+  image: HERO_IMAGE_URL,
+  url: SITE_URL,
   category: 'Domain Name',
+  sku: 'icrabuilders.com',
+  mpn: 'icrabuilders.com',
+  brand: {
+    '@type': 'Brand',
+    name: 'ICRA Builders',
+  },
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
     price: '14997',
     priceCurrency: 'USD',
     seller: {
