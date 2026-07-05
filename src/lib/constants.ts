@@ -1,4 +1,16 @@
 export const SITE_URL = 'https://icrabuilders.com';
+
+/** Absolute canonical URL for a pathname (matches trailingSlash: 'always'). */
+export function canonicalUrl(pathname: string): string {
+  const normalized =
+    pathname === '/index.html' || pathname === ''
+      ? '/'
+      : pathname.endsWith('/')
+        ? pathname
+        : `${pathname}/`;
+
+  return new URL(normalized, SITE_URL).href;
+}
 export const SITE_NAME = 'icrabuilders.com';
 export const ACQUISITION_EMAIL = 'sales@desertrich.com';
 export const GOOGLE_SITE_VERIFICATION = 'X7oYi-OXZPv3XTnusJXkQyA4qZWP17h_QJV86W0dPho';

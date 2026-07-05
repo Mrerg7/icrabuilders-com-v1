@@ -1,5 +1,8 @@
-# Canonical HTTP Link header — required for GSC canonical resolution
+# Canonical HTTP Link header — reinforces HTML canonical for homepage
 /
+  Link: <https://icrabuilders.com/>; rel="canonical"
+
+/index.html
   Link: <https://icrabuilders.com/>; rel="canonical"
 
 # Security headers
