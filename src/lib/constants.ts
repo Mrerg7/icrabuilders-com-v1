@@ -15,9 +15,13 @@ export const SITE_NAME = 'icrabuilders.com';
 export const ACQUISITION_EMAIL = 'sales@desertrich.com';
 export const GOOGLE_SITE_VERIFICATION = 'X7oYi-OXZPv3XTnusJXkQyA4qZWP17h_QJV86W0dPho';
 
-/** Cloudflare Images CDN — hero / OG */
-export const HERO_IMAGE_URL =
-  'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/19c09c31-eeaf-4862-097b-1bb1b68e6e00/public';
+/** Asking price shown on-page and in Product structured data. */
+export const ASKING_PRICE = '$14,997';
+export const ASKING_PRICE_VALUE = '14997';
+
+/** Social share card (self-hosted — the previous Cloudflare Images URL 404s). */
+export const OG_IMAGE_PATH = '/og.jpg';
+export const OG_IMAGE_URL = new URL(OG_IMAGE_PATH, SITE_URL).href;
 
 export const DISCLAIMER =
   'This website is for demonstration and informational purposes only. It does not constitute an offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific technologies are based on publicly available information as of the date shown and are subject to change.';

@@ -1,22 +1,29 @@
 ---
 import '../styles/global.css';
 import StructuredData from '../components/StructuredData.astro';
-import { SITE_NAME, HERO_IMAGE_URL, GOOGLE_SITE_VERIFICATION, canonicalUrl } from '../lib/constants';
+import {
+  SITE_NAME,
+  OG_IMAGE_URL,
+  GOOGLE_SITE_VERIFICATION,
+  canonicalUrl,
+} from '../lib/constants';
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  extraSchema?: Record<string, unknown>[];
 }
 
 const {
-  title = `${SITE_NAME} — Premium Domain for ICRA Builders | Healthcare Construction`,
-  description = 'Acquire icrabuilders.com — the clean, premium .com brand for ICRA Builders. The authoritative name for specialized healthcare construction, ICRA compliance, training, and services.',
+  title = 'icrabuilders.com — Premium ICRA Builders Domain for Sale',
+  description = 'Buy icrabuilders.com — the exact-match .com for ICRA Builders. Premium healthcare construction domain for sale, escrow-protected transfer. Inquire today.',
   noindex = false,
+  extraSchema = [],
 } = Astro.props;
 
 const canonical = canonicalUrl(Astro.url.pathname);
-const ogImage = HERO_IMAGE_URL;
+const ogImage = OG_IMAGE_URL;
 const themeColor = '#0D9488';
 ---
 
@@ -50,6 +57,7 @@ const themeColor = '#0D9488';
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="icrabuilders.com — premium domain for ICRA-focused healthcare construction" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -63,6 +71,7 @@ const themeColor = '#0D9488';
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,9 +80,8 @@ const themeColor = '#0D9488';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://imagedelivery.net" />
 
-    <StructuredData />
+    <StructuredData extraSchema={extraSchema} />
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
     <slot />

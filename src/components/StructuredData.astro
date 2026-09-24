@@ -2,24 +2,48 @@
 import {
   SITE_URL,
   SITE_NAME,
-  HERO_IMAGE_URL,
+  OG_IMAGE_URL,
   ACQUISITION_EMAIL,
+  ASKING_PRICE_VALUE,
 } from '../lib/constants';
+
+interface Props {
+  extraSchema?: Record<string, unknown>[];
+}
+
+const { extraSchema = [] } = Astro.props;
 
 const description =
   'Acquire icrabuilders.com — the clean, premium .com brand for ICRA Builders. The authoritative name for specialized healthcare construction, ICRA compliance, training, and services.';
 
+const webSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: 'en-US',
+  description,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    email: ACQUISITION_EMAIL,
+  },
+};
+
 const webPage = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: `${SITE_NAME} — Premium Domain for ICRA Builders | Healthcare Construction`,
+  name: `icrabuilders.com — Premium ICRA Builders Domain for Sale`,
   description,
   url: SITE_URL,
   inLanguage: 'en-US',
   primaryImageOfPage: {
     '@type': 'ImageObject',
-    url: HERO_IMAGE_URL,
-    contentUrl: HERO_IMAGE_URL,
+    url: OG_IMAGE_URL,
+    contentUrl: OG_IMAGE_URL,
+    width: 1200,
+    height: 630,
   },
   about: {
     '@type': 'Thing',
@@ -35,8 +59,9 @@ const organization = {
   name: SITE_NAME,
   url: SITE_URL,
   email: ACQUISITION_EMAIL,
-  logo: HERO_IMAGE_URL,
+  logo: OG_IMAGE_URL,
   description,
+  sameAs: [SITE_URL],
 };
 
 const product = {
@@ -45,7 +70,7 @@ const product = {
   name: 'icrabuilders.com domain name',
   description:
     'Premium .com domain for ICRA Builders in healthcare construction. The authoritative brand for ICRA compliance, training, and specialized construction services.',
-  image: HERO_IMAGE_URL,
+  image: OG_IMAGE_URL,
   url: SITE_URL,
   category: 'Domain Name',
   sku: 'icrabuilders.com',
@@ -58,13 +83,14 @@ const product = {
     '@type': 'Offer',
     availability: 'https://schema.org/InStock',
     itemCondition: 'https://schema.org/NewCondition',
-    price: '14997',
+    price: ASKING_PRICE_VALUE,
     priceCurrency: 'USD',
+    priceValidUntil: '2027-12-31',
     seller: {
       '@type': 'Organization',
       email: ACQUISITION_EMAIL,
     },
-    url: `mailto:${ACQUISITION_EMAIL}`,
+    url: SITE_URL,
     shippingDetails: {
       '@type': 'OfferShippingDetails',
       shippingRate: {
@@ -94,16 +120,21 @@ const product = {
     },
     hasMerchantReturnPolicy: {
       '@type': 'MerchantReturnPolicy',
-      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-      returnMethod: 'https://schema.org/ReturnByMail',
-      returnFees: 'https://schema.org/FreeReturn',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
       applicableCountry: 'US',
-      merchantReturnDays: 0,
     },
   },
 };
 ---
 
+<script type="application/ld+json" set:html={JSON.stringify(webSite)} />
 <script type="application/ld+json" set:html={JSON.stringify(webPage)} />
 <script type="application/ld+json" set:html={JSON.stringify(organization)} />
 <script type="application/ld+json" set:html={JSON.stringify(product)} />
+{
+  extraSchema.map(
+    (schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...schema })} />
+    ),
+  )
+}

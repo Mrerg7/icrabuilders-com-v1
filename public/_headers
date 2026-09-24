@@ -10,7 +10,14 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
   Cache-Control: public, max-age=3600
+
+# Share card
+/og.jpg
+  Content-Type: image/jpeg
+  Cache-Control: public, max-age=86400
 
 # Fonts — longer cache
 https://fonts.googleapis.com/*
@@ -20,6 +27,10 @@ https://fonts.gstatic.com/*
   Cache-Control: public, max-age=86400
 
 # Sitemap
+/sitemap-index.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /sitemap-0.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600

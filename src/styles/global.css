@@ -38,6 +38,22 @@
     font-family: var(--font-body);
   }
 
+  /* Long unbreakable tokens (e.g. "icrabuilders.com") must never force horizontal
+     scroll — `anywhere` also keeps min-content sizing from widening grid/flex items. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: anywhere;
+  }
+
+  /* Keep anchor targets clear of the sticky nav. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
   ::selection {
     @apply bg-teal-200 text-teal-900;
   }
@@ -51,7 +67,8 @@
   }
 
   .section-header {
-    @apply text-4xl tracking-tighter font-bold;
+    @apply tracking-tighter font-bold;
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
   }
 
   .modern-card {
